@@ -72,6 +72,7 @@ int _printf(const char *format, ...)
 {
 	char *buffer = NULL;
 	va_list val;
+	int count;
 	int pos = 0;
 
 	va_start(val, format);
@@ -87,5 +88,7 @@ int _printf(const char *format, ...)
 		pos++;
 	}
 	va_end(val);
-	return (write(1, buffer, strlen(buffer)));
+	count = write(1, buffer, strlen(buffer));
+	free(buffer);
+	return (count);
 }
