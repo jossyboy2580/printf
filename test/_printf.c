@@ -18,6 +18,7 @@ void assign_formatter(char **buffer, char *spec, char specifier, va_list val)
 		case 'g':
 			break;
 		case 'i':
+			handle_decimal(buffer, spec, val);
 			break;
 		case 'o':
 			break;
@@ -70,10 +71,8 @@ void process_specifier(const char **format, int *pos, char **buffer, va_list val
 int _printf(const char *format, ...)
 {
 	char *buffer = NULL;
-	int formatter_seen = 0;
-	int escapper_seen = 0;
 	va_list val;
-	int pos = 0, number, n_digits, i;
+	int pos = 0;
 
 	va_start(val, format);
 	while (format[pos] != '\0')
