@@ -33,20 +33,41 @@ int digits_count(int n)
 char *int_to_str(int n)
 {
 	char *str = NULL;
+	int dig;
 	int digs, divisor = 1;
-	int i;
+	int i = 0;
+	int negative = 0;
 
+	if (n < 0)
+	{
+		negative = 1;
+		if (n == -1)
+		{
+			negative = 0;
+			n = -n;
+		}
+		else
+			n = -1 * (n + 1);
+	}
 	digs = digits_count(n);
 
 	for (i = 0; i < digs - 1; i++)
 		divisor *= 10;
 
-	str = malloc(sizeof(char) * digs + 1);
+	i = 0;
+	str = malloc(sizeof(char) * digs + negative + 1);
 	if (str == NULL)
 		return (NULL);
-	for (i = 0; i < digs; i++)
+	if (negative)
 	{
-		str[i] = (n / divisor) + '0';
+		str[i++] = '-';
+	}
+	for (i = i; i < digs + negative; i++)
+	{
+		dig = n / divisor;
+		if (i == digs + negative - 1 && negative)
+			dig++;
+		str[i] = dig + '0';
 		n = n % divisor;
 		divisor = divisor / 10;
 	}
