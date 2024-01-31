@@ -46,7 +46,6 @@ void handle_char(char **buffer, char *spec, va_list val)
 
 	(void)(spec);
 	c = va_arg(val, int);
-	printf("char is %c\n", c);
 	append_char(buffer, c);
 }
 
