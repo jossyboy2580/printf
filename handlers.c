@@ -87,7 +87,7 @@ void handle_binary(char **buffer, char *spec, va_list val)
 			return;
 		rem = arg % 2;
 		arg = arg / 2;
-		bin[len - 2] = rem + '0';
+		bin[len - 2] = rem - '0';
 	}
 	bin[len - 1] = '\0';
 	rev_string(bin);
