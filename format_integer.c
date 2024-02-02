@@ -24,6 +24,26 @@ int digits_count(int n)
 }
 
 /**
+ * udigits_count - A function to count how many digits a number has
+ *
+ * @n: The number whose digits we want to count
+ * Return: How many digits the number has
+ */
+
+int udigits_count(unsigned int n)
+{
+	int digs = 0;
+
+	if (n == 0)
+		return (1);
+	{
+		n = n / 10;
+		digs++;
+	}
+	return (digs);
+}
+
+/**
  * int_to_str - A function that converts an integer to strings of chars
  *
  * @n: The integer we want to convert
@@ -66,6 +86,42 @@ char *int_to_str(int n)
 	{
 		dig = n / divisor;
 		if (i == digs + negative - 1 && negative)
+			dig++;
+		str[i] = dig + '0';
+		n = n % divisor;
+		divisor = divisor / 10;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+/**
+ * uint_to_str - A function that converts an integer to strings of chars
+ *
+ * @n: The integer we want to convert
+ * Return: A null terminated string of the digits of the n
+ */
+
+char *uint_to_str(unsigned int n)
+{
+	char *str = NULL;
+	int dig;
+	unsigned int digs, divisor = 1;
+	unsigned int i = 0;
+
+	digs = udigits_count(n);
+
+	for (i = 0; i < digs - 1; i++)
+		divisor *= 10;
+
+	i = 0;
+	str = malloc(sizeof(char) * digs + 1);
+	if (str == NULL)
+		return (NULL);
+	for (i = i; i < digs; i++)
+	{
+		dig = n / divisor;
+		if (i == digs - 1)
 			dig++;
 		str[i] = dig + '0';
 		n = n % divisor;

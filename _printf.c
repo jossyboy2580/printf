@@ -20,11 +20,12 @@ void assign_formatter(char **buffer, char *spec, char specifier, va_list val)
 		case 'c':
 			handle_char(buffer, spec, val);
 			break;
-		case 'e':
+		case 'b':
+			handle_binary(buffer, spec, val);
 			break;
-		case 'f':
+		case 'p':
 			break;
-		case 'g':
+		case 'X':
 			break;
 		case 'i':
 			handle_decimal(buffer, spec, val);
@@ -37,6 +38,7 @@ void assign_formatter(char **buffer, char *spec, char specifier, va_list val)
 		case 'u':
 			break;
 		case 'x':
+			break;
 		case '%':
 			handle_percent(buffer, spec, val);
 			break;
@@ -56,8 +58,9 @@ void assign_formatter(char **buffer, char *spec, char specifier, va_list val)
 
 void process_specifier(const char **fmt, int *pos, char **buff, va_list val)
 {
-	char *specifications = "cdefgiosux%";
+	char *specifications = "cpdbiosSuxX%";
 	char *spec = NULL;
+	int starting_point = *pos;
 	int spec_found = 0;
 	char specifier;
 	int entered = 1;
@@ -82,6 +85,11 @@ void process_specifier(const char **fmt, int *pos, char **buff, va_list val)
 			break;
 		(*pos)++;
 	}
+	if (!spec_found)
+	{
+		append_string(buff, (char *)(*fmt + starting_point - 1));
+		return;
+	}
 	spec[entered - 1] = '\0';
 	assign_formatter(buff, spec, specifier, val);
 }
@@ -94,23 +102,23 @@ void process_specifier(const char **fmt, int *pos, char **buff, va_list val)
  * Return: A count of how many chars were printed
  */
 
-int _printf(const char *format, ...)
+int _printf(const char *fmt, ...)
 {
 	char *buffer = NULL;
 	va_list val;
 	int count;
 	int pos = 0;
-
-	va_start(val, format);
-	while (format[pos] != '\0')
+		
+	va_start(val, fmt);
+	while (fmt[pos] != '\0')
 	{
-		if (format[pos] == '%')
+		if (fmt[pos] == '%')
 		{
 			pos++;
-			process_specifier(&format, &pos, &buffer, val);
+			process_specifier(&fmt, &pos, &buffer, val);
 		}
 		else
-			append_char(&buffer, format[pos]);
+			append_char(&buffer, fmt[pos]);
 		pos++;
 	}
 	va_end(val);

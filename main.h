@@ -15,6 +15,7 @@ void handle_char(char **buffer, char *spec, va_list val);
 void handle_binary(char **buffer, char *spec, va_list val);
 
 void rev_string(char *str);
+char *bin_conv(unsigned int num);
 char *int_to_str(int arg);
 void append_string(char **str, char *str2);
 void append_char(char **str, char c);

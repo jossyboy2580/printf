@@ -87,7 +87,7 @@ void process_specifier(const char **fmt, int *pos, char **buff, va_list val)
 	}
 	if (!spec_found)
 	{
-		append_string(buff, (char *)(*fmt + starting_point));
+		append_string(buff, (char *)(*fmt + starting_point - 1));
 		return;
 	}
 	spec[entered - 1] = '\0';
