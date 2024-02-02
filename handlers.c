@@ -35,7 +35,6 @@ void handle_percent(char **buffer, char *spec, va_list val)
 	append_char(buffer, '%');
 }
 
-
 /**
  * handle_char - Handle all char conversions
  *
