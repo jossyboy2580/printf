@@ -11,6 +11,7 @@
  * @val: A macro for the variadic functions
  */
 
+
 void assign_formatter(char **buffer, char *spec, char specifier, va_list val)
 {
 	switch (specifier)
