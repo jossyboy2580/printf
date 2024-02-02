@@ -8,6 +8,7 @@ char *bin_conv(unsigned int num)
 	unsigned int len = 1;
 	unsigned int rem;
 
+
 	while (num)
 	{
 		bin = realloc(bin, sizeof(char) * ++len);
