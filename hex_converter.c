@@ -8,7 +8,16 @@ char *hex_conv(unsigned int num, int upper)
 	int rem;
 
 	if (num == 0)
-		return ("0");
+	{
+		len = 2;
+		hex = malloc(sizeof(char) * len);
+		if (!hex)
+		{
+			printf("Malloc of hexadecimal number failed\n");
+			return (NULL);
+		}
+		hex[len - 2] = 0 + '0';
+	}
 	while (num)
 	{
 		hex = realloc(hex, sizeof(char) * ++len);

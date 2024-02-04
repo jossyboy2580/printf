@@ -7,7 +7,16 @@ char *oct_conv(unsigned int num)
 	int rem;
 
 	if (num == 0)
-		return ("0");
+	{
+		len = 2;
+		oct = malloc(sizeof(char) * len);
+		if (!oct)
+		{
+			printf("Malloc of octal number failed\n");
+			return (NULL);
+		}
+		oct[len - 2] = 0 + '0';
+	}
 	while (num)
 	{
 		oct = realloc(oct, sizeof(char) * ++len);
