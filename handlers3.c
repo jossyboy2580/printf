@@ -28,13 +28,14 @@ void handle_uint(char **buffer, char *spec, va_list val)
 
 void handle_reverse(char **buffer, char *spec, va_list val)
 {
-	char *str = va_arg(val, char *);
+	char *str = strdup(va_arg(val, char *));
 
 	if (str == NULL)
 		str = "(nil)";
 	rev_string(str);
 	append_string(buffer, str);
 	free(spec);
+	free(str);
 }
 
 /**
@@ -46,7 +47,7 @@ void handle_reverse(char **buffer, char *spec, va_list val)
  */
 void handle_rot13(char **buffer, char *spec, va_list val)
 {
-	char *str = va_arg(val, char *);
+	char *str = strdup(va_arg(val, char *));
 	char *rotated;
 
 	if (str == NULL)
@@ -54,4 +55,5 @@ void handle_rot13(char **buffer, char *spec, va_list val)
 	rotated = rot13(str);
 	append_string(buffer, rotated);
 	free(spec);
+	free(str);
 }
