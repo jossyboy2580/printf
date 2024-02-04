@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * hex_conv - A function to get the octadecimal value of a number
+ *
+ * @num: The number we want to compute for
+ * Return: A string containing the octal value of num
+ */
+
 char *hex_conv(unsigned int num, int upper)
 {
 	char *hex = NULL;
@@ -36,6 +43,12 @@ char *hex_conv(unsigned int num, int upper)
 	return (hex);
 }
 
+/**
+ * hex_conv_p - A function to get the octadecimal value of a number
+ *
+ * @num: The number we want to compute for
+ * Return: A string containing the octal value of num
+ */
 
 char *hex_conv_p(unsigned long num, int upper)
 {

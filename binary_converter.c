@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include "main.h"
 
+/**
+ * bin_conv - A function to get the octadecimal value of a number
+ * @num: The number we want to compute for
+ * Return: A string containing the octal value of num
+ */
+
 char *bin_conv(unsigned int num)
 {
 	char *bin = NULL;

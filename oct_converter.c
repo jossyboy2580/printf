@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * oct_conv - A function to get the octadecimal value of a number
+ *
+ * @num: The number we want to compute for
+ * Return: A string containing the octal value of num
+ */
+
 char *oct_conv(unsigned int num)
 {
 	char *oct = NULL;

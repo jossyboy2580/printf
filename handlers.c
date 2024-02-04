@@ -15,7 +15,7 @@ void handle_string(char **buffer, char *spec, va_list val)
 	(void)(spec);
 	str = va_arg(val, char *);
 	if (str == NULL)
-		str = "(nil)";
+		str = "(null)";
 	append_string(buffer, str);
 }
 
@@ -35,7 +35,7 @@ void handle_bigstring(char **buffer, char *spec, va_list val)
 	(void)(spec);
 	str = va_arg(val, char *);
 	if (str == NULL)
-		str = "(nil)";
+		str = "(null)";
 	str = filter_non_printable(str);
 	append_string(buffer, str);
 	free(str);
