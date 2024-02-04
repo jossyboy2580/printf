@@ -17,3 +17,41 @@ void handle_uint(char **buffer, char *spec, va_list val)
 	free(str_arg);
 	free(spec);
 }
+
+/**
+ * handle_reverse - Reverse the argument
+ *
+ * @buffer: The destination for storing the chars
+ * @spec: The specifications to use
+ * @val: Variadic functions list macro
+ */
+
+void handle_reverse(char **buffer, char *spec, va_list val)
+{
+	char *str = va_arg(val, char *);
+
+	if (str == NULL)
+		str = "(nil)";
+	rev_string(str);
+	append_string(buffer, str);
+	free(spec);
+}
+
+/**
+ * handle_rot13 - Rotate the string argument
+ *
+ * @buffer: The destination for storing the chars
+ * @spec: The specifications to use
+ * @val: Variadic functions list macro
+ */
+void handle_rot13(char **buffer, char *spec, va_list val)
+{
+	char *str = va_arg(val, char *);
+	char *rotated;
+
+	if (str == NULL)
+		str = "(nil)";
+	rotated = rot13(str);
+	append_string(buffer, rotated);
+	free(spec);
+}

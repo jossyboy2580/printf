@@ -46,6 +46,12 @@ void assign_formatter(char **buffer, char *spec, char specifier, va_list val)
 		case 'u':
 			handle_uint(buffer, spec, val);
 			break;
+		case 'r':
+			handle_reverse(buffer, spec, val);
+			break;
+		case 'R':
+			handle_rot13(buffer, spec, val);
+			break;
 		case 'x':
 			handle_hex(buffer, spec, val);
 			break;
@@ -68,7 +74,7 @@ void assign_formatter(char **buffer, char *spec, char specifier, va_list val)
 
 void process_specifier(char *fmt, int *pos, char **buff, va_list val)
 {
-	char *specifications = "cpdbiosSuxX%";
+	char *specifications = "cpirRdbiosSuxX%";
 	char *spec = NULL;
 	int current_pos = *pos;
 	int spec_found = 0;

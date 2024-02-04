@@ -21,6 +21,8 @@ void handle_binary(char **buffer, char *spec, va_list val);
 void handle_oct(char **buffer, char *spec, va_list val);
 void handle_hex(char **buffer, char *spec, va_list val);
 void handle_bighex(char **buffer, char *spec, va_list val);
+void handle_reverse(char **buffer, char *spec, va_list val);
+void handle_rot13(char **buffer, char *spec, va_list val);
 
 char *filter_non_printable(char *str);
 
