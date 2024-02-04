@@ -20,6 +20,26 @@ void handle_string(char **buffer, char *spec, va_list val)
 }
 
 /**
+ * handle_bigstring - Handle all string conversions
+ *
+ * @buffer: The destination for storing the chars
+ * @spec: The specifications to use
+ * @val: Variadic functions list macro
+ */
+
+void handle_bigstring(char **buffer, char *spec, va_list val)
+{
+	char *str;
+
+	(void)(spec);
+	str = va_arg(val, char *);
+	if (str == NULL)
+		str = "(nil)";
+	str = filter_non_printable(str);
+	append_string(buffer, str);
+}
+
+/**
  * handle_percent - Handle all percent conversions
  *
  * @buffer: The destination for storing the chars
@@ -65,21 +85,5 @@ void handle_decimal(char **buffer, char *spec, va_list val)
 
 	append_string(buffer, str_arg);
 	free(str_arg);
-	free(spec);
-}
-
-/**
- * handle_binary - Handle all binary conversions
- *
- * @buffer: The destination for storing the chars
- * @spec: The specifications to use
- * @val: Variadic functions list macro
- */
-void handle_binary(char **buffer, char *spec, va_list val)
-{
-	unsigned int arg = va_arg(val, unsigned int);
-	char *bin = bin_conv(arg);
-	append_string(buffer, bin);
-	free(bin);
 	free(spec);
 }
