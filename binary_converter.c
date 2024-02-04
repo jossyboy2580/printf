@@ -9,17 +9,31 @@ char *bin_conv(unsigned int num)
 	unsigned int rem;
 
 
-	while (num)
+	if (num == 0)
 	{
-		bin = realloc(bin, sizeof(char) * ++len);
+		len = 2;
+		bin = malloc(sizeof(char) * len);
 		if (!bin)
 		{
-			printf("Realloc failed\n");
+			printf("Malloc of binary number failed\n");
 			return (NULL);
 		}
-		rem = num % 2;
-		num = num / 2;
-		bin[len - 2] = rem + '0';
+		bin[len - 2] = 0 + '0';
+	}
+	else
+	{
+		while (num)
+		{
+			bin = realloc(bin, sizeof(char) * ++len);
+			if (!bin)
+			{
+				printf("Realloc failed\n");
+				return (NULL);
+			}
+			rem = num % 2;
+			num = num / 2;
+			bin[len - 2] = rem + '0';
+		}
 	}
 	bin[len -1] = '\0';
 	rev_string(bin);
