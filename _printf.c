@@ -76,7 +76,7 @@ void process_specifier(char *fmt, int *pos, char **buff, va_list val)
 	int entered = 1;
 	int i;
 
-	while (fmt[*pos] != '\0' && fmt[*pos] != '%')
+	while (fmt[*pos] != '\0')
 	{
 		spec = realloc(spec, sizeof(char) * (++entered));
 		if (!spec)
@@ -95,7 +95,8 @@ void process_specifier(char *fmt, int *pos, char **buff, va_list val)
 			break;
 		(*pos)++;
 	}
-	spec[entered - 1] = '\0';
+	if (current_pos != *pos)
+		spec[entered - 1] = '\0';
 	if (!spec_found)
 	{
 		append_char(buff, '%');

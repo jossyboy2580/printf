@@ -57,8 +57,10 @@ void handle_hex(char **buffer, char *spec, va_list val)
  */
 void handle_pointer(char **buffer, char *spec, va_list val)
 {
-	unsigned int arg = va_arg(val, unsigned long int);
-	char *hex = hex_conv(arg, 0);
+	char *hex_prefill = "0x";
+	void *arg = va_arg(val, void *);
+	char *hex = hex_conv_p((unsigned long)arg, 0);
+	append_string(buffer, hex_prefill);
 	append_string(buffer, hex);
 	free(hex);
 	free(spec);

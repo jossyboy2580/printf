@@ -38,6 +38,7 @@ void handle_bigstring(char **buffer, char *spec, va_list val)
 		str = "(nil)";
 	str = filter_non_printable(str);
 	append_string(buffer, str);
+	free(str);
 }
 
 /**

@@ -2,6 +2,7 @@
 #define MAIN_H
 
 #include <stdio.h>
+#include <string.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -23,13 +24,16 @@ void handle_bighex(char **buffer, char *spec, va_list val);
 
 char *filter_non_printable(char *str);
 
+int get_width(char *spec);
+int get_precision(char *spec);
 char *rot13(char *str);
 void rev_string(char *str);
 char *bin_conv(unsigned int num);
 char *oct_conv(unsigned int num);
 char *hex_conv(unsigned int num, int upper);
+char *hex_conv_p(unsigned long num, int upper);
 char *int_to_str(int arg);
-char *uint_to_str(unsigned int arg);
+char *uint_to_str(unsigned long int arg);
 void append_string(char **str, char *str2);
 void append_char(char **str, char c);
 

@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 /**
  * str_len - A function to determine the length of a null terminated
  * string
@@ -33,7 +32,7 @@ void append_string(char **str1, char *str2)
 	unsigned int i;
 
 	if (str2 == NULL)
-		return;
+		str2 = "";
 	if (*str1 == NULL)
 		len_str1 = 0;
 	else

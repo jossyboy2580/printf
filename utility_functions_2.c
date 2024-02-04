@@ -26,3 +26,51 @@ char *rot13(char *s)
 	}
 	return (s);
 }
+
+/**
+ * get_width - A function to get the width of a format specifier
+ *
+ * @spec: The specifier string we're scanning for the string
+ * Return: A width for the string
+ */
+
+int get_width(char *spec)
+{
+	unsigned int i;
+
+	i = 0;
+	while (spec[i] != '\0')
+	{
+		if (spec[i] >= '1' && spec[i] <= '9')
+		{
+			if (spec[i + 1] == '.' || spec[i + 2] == '\0')
+				return (spec[i] - '0');
+		}
+		i++;
+	}
+	return (-1);
+}
+
+/**
+ * get_precision - A function to get the precision of a format specifier
+ *
+ * @spec: The specifier string we're scanning for the string
+ * Return: A width for the string
+ */
+
+int get_precision(char *spec)
+{
+	unsigned int i;
+
+	i = 0;
+	while (spec[i] != '\0')
+	{
+		if (spec[i] >= '0' && spec[i] <= '9')
+		{
+			if (spec[i - 1] == '.' || spec[i + 2] == '\0')
+				return (spec[i] - '0');
+		}
+		i++;
+	}
+	return (-1);
+}

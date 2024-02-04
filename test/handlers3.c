@@ -9,7 +9,7 @@
  */
 void handle_uint(char **buffer, char *spec, va_list val)
 {
-	unsigned int arg = va_arg(val, int);
+	unsigned long int arg = va_arg(val, unsigned long int);
 	char *str_arg = uint_to_str(arg);
 
 	append_string(buffer, str_arg);

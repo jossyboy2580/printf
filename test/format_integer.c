@@ -1,5 +1,6 @@
 #include "main.h"
 
+
 /**
  * digits_count - A function to count how many digits a number has
  *
@@ -30,9 +31,9 @@ int digits_count(int n)
  * Return: How many digits the number has
  */
 
-int udigits_count(unsigned int n)
+unsigned int udigits_count(unsigned int n)
 {
-	int digs = 0;
+	unsigned int digs = 0;
 
 	if (n == 0)
 		return (1);
@@ -102,12 +103,12 @@ char *int_to_str(int n)
  * Return: A null terminated string of the digits of the n
  */
 
-char *uint_to_str(unsigned int n)
+char *uint_to_str(unsigned long int n)
 {
 	char *str = NULL;
 	int dig;
-	unsigned int digs, divisor = 1;
-	unsigned int i = 0;
+	unsigned long int digs, divisor = 1;
+	unsigned long int i = 0;
 
 	digs = udigits_count(n);
 
