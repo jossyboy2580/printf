@@ -154,7 +154,7 @@ int _printf(const char *fmt, ...)
 	int count;
 	int pos = 0;
 
-	if (fmt == NULL)
+	if (fmt == NULL || strlen(fmt) == 0)
 		return (0);
 	va_start(val, fmt);
 	_print_recurser(&buffer, (char *)fmt, &pos, val);
