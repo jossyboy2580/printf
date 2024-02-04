@@ -7,6 +7,8 @@ char *hex_conv(unsigned int num, int upper)
 	int overflow = upper == 1 ? 7 : 39;
 	int rem;
 
+	if (num == 0)
+		return ("0");
 	while (num)
 	{
 		hex = realloc(hex, sizeof(char) * ++len);

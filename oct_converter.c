@@ -6,6 +6,8 @@ char *oct_conv(unsigned int num)
 	unsigned int len = 1;
 	int rem;
 
+	if (num == 0)
+		return ("0");
 	while (num)
 	{
 		oct = realloc(oct, sizeof(char) * ++len);
