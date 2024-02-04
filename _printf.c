@@ -1,7 +1,6 @@
 #include "main.h"
 #include <string.h>
 
-
 void _print_recurser(char **buf, char *fmt, int *pos, va_list val);
 /**
  * assign_formatter - This function calls the appropraite formatter function
@@ -11,6 +10,7 @@ void _print_recurser(char **buf, char *fmt, int *pos, va_list val);
  * @specifier: The specifier to use
  * @val: A macro for the variadic functions
  */
+
 
 void assign_formatter(char **buffer, char *spec, char specifier, va_list val)
 {

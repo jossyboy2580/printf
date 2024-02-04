@@ -19,6 +19,7 @@ void handle_string(char **buffer, char *spec, va_list val)
 	append_string(buffer, str);
 }
 
+
 /**
  * handle_bigstring - Handle all string conversions
  *
