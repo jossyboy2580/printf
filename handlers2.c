@@ -59,7 +59,16 @@ void handle_pointer(char **buffer, char *spec, va_list val)
 {
 	char *hex_prefill = "0x";
 	void *arg = va_arg(val, void *);
-	char *hex = hex_conv_p((unsigned long)arg, 0);
+	char *hex;
+	
+	if (arg == NULL)
+	{
+		arg = "(nil)";
+		append_string(buffer, arg);
+		free(spec);
+		return;
+	}
+	hex = hex_conv_p((unsigned long)arg, 0);
 	append_string(buffer, hex_prefill);
 	append_string(buffer, hex);
 	free(hex);
