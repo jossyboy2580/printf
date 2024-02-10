@@ -8,6 +8,7 @@
  * @val: Variadic functions list macro
  */
 
+
 void handle_string(char **buffer, char *spec, va_list val)
 {
 	char *str;
