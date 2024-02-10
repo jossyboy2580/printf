@@ -7,6 +7,7 @@
  * @spec: The specifications to use
  * @val: Variadic functions list macro
  */
+
 void handle_binary(char **buffer, char *spec, va_list val)
 {
 	unsigned int arg = va_arg(val, unsigned int);
