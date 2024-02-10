@@ -6,7 +6,6 @@
  * @s: The string we want to map
  * Return: the pointer to the string s
  */
-
 char *rot13(char *s)
 {
 	char *domain = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
