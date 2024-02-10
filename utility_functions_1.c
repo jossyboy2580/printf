@@ -8,6 +8,7 @@
  * Return:: an unsigned value of the length of the string
  */
 
+
 unsigned int str_len(char *str)
 {
 	int i = 0;
