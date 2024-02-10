@@ -32,7 +32,7 @@ void append_string(char **str1, char *str2)
 	unsigned int i;
 
 	if (str2 == NULL)
-		return;
+		str2 = "";
 	if (*str1 == NULL)
 		len_str1 = 0;
 	else
@@ -92,4 +92,35 @@ void rev_string(char *s)
 		*(s + i) = *(s + (len - (i + 1)));
 		*(s + (len - (i + 1))) = temp;
 	}
+}
+
+/**
+ * filter_non_printable - This function filters the non printable part
+ * of a string with the big S format specifier
+ *
+ * @str: The string we want to format
+ * Return: A string of the formatted output
+ */
+
+char *filter_non_printable(char *str)
+{
+	int i = 0;
+	char *str_new = NULL;
+
+	while (str[i] != '\0')
+	{
+		if ((0 < str[i] && str[i] < 32) || str[i] >= 127)
+		{
+			append_char(&str_new, '\\');
+			append_char(&str_new, 'x');
+			append_string(&str_new, hex_conv(str[i], 1));
+		}
+		else
+		{
+			append_char(&str_new, str[i]);
+		}
+		i++;
+	}
+	free(str);
+	return (str_new);
 }
