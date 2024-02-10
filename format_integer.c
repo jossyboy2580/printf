@@ -8,6 +8,7 @@
  * Return: How many digits the number has
  */
 
+
 int digits_count(int n)
 {
 	int digs = 0;
