@@ -11,7 +11,6 @@ void _print_recurser(char **buf, char *fmt, int *pos, va_list val);
  * @val: A macro for the variadic functions
  */
 
-
 void assign_formatter(char **buffer, char *spec, char specifier, va_list val)
 {
 	switch (specifier)
